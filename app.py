@@ -7,8 +7,10 @@ import os
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
